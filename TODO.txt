@@ -1,0 +1,18 @@
+STUFF TO do
+
+Ankit
+-change what the units are
+-add a page for the rubric (jus renders the rubric)
+-page for ai rubruc generaiton (juts the ui. You input a topic form a list of topics with a giant button that ways **GENERATE TOPIC**)
+-screen where an essay can be inputted and a grade is reutrned4
+-change the content of each pages temeslves to reflect the rubric
+chang ethe subunits to follow each buttle point of each aspect of tehe rubriic
+-change the sidebar (the left one) to render only the uits that eist (cuz we odnt need all 8 units)
+-redo videos for each subtopic (short 3 min videos exp)juts explaining the content of each page, make a short slideshowand talk over it, wathc unit 2 of nivaro and unit 3 cuz i did ts there)
+
+
+arjun
+-bro how dafaq did notch make all of minecraft with juts java ts crazy how he know eherer he faincg nad the blocks is so pretty and it doesnt even lag tm ccrazyyyy
+-instaed of the nviaro chabot being a permanant fixture on the right of the screen, we gyatt to remove it and make a little button that expands into it. 
+get login and signup working
+-make login the main page unless logged in i got to figure it out its gonna take a while it isnt easy-
