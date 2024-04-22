@@ -1,0 +1,250 @@
+export const metadata = {
+  title: 'HTML, CSS, JavaScript',
+  description:
+    'Unit 3 of the Nivaro AI Website Program expands upon the foundational web development skills, delving deeper into advanced HTML, CSS, JavaScript, and introducing backend technologies.',
+}
+
+# Unit 3: Deep Dive into Web Technologies
+
+In Unit 3 of the Nivaro AI Website Program, we progress beyond the basics of web development and start exploring more advanced aspects of HTML, CSS, and JavaScript. This unit also introduces students to backend development, providing a more holistic understanding of full-stack web development. {{ className: 'lead' }}
+
+<iframe
+  style={{ width: '100%', height: '500px' }}
+
+src="https://www.youtube.com/embed/q1lxndSVkQo"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowFullScreen
+
+> </iframe>
+
+## Lesson 3.1: Advanced HTML and CSS
+
+This Lesson is all about mastering advanced techniques in HTML and CSS. Students will learn about HTML5 semantic tags, creating forms, and implementing responsive web design with CSS. These skills are crucial for creating more structured, accessible, and responsive web pages.
+
+### Example: Creating a Responsive Layout with HTML and CSS
+
+<CodeGroup title="HTML">
+```html
+<!-- Advanced HTML with Semantic Elements -->
+<!doctype html>
+<html>
+  <head>
+    <title>Responsive Web Page</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <h1>Advanced Web Page</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+    <main>
+      <article>
+        <h2>Article Heading</h2>
+        <p>Article content...</p>
+      </article>
+      <aside>
+        <h3>Sidebar Heading</h3>
+        <ul>
+          <li><a href="#">Link 1</a></li>
+          <li><a href="#">Link 2</a></li>
+          <li><a href="#">Link 3</a></li>
+        </ul>
+      </aside>
+    </main>
+    <footer>
+      <p>&copy; 2024 My Website</p>
+    </footer>
+  </body>
+</html>
+```
+
+</CodeGroup>
+
+<CodeGroup title="CSS">
+
+```css
+/* CSS for Responsive Design */
+@media screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+  nav,
+  aside {
+    display: none;
+  }
+}
+```
+
+</CodeGroup>
+
+<div className="not-prose mb-16 mt-6 flex gap-3">
+  <Button
+    href="https://github.com/EternalLuxury/basic-html-website/tree/main"
+    arrow="right"
+  >
+    <>View Example Website</>
+  </Button>
+</div>
+
+<iframe
+  style={{ width: '100%', height: '500px' }}
+
+src="https://www.youtube.com/embed/sIC_Ve5Wacs"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowFullScreen
+
+> </iframe>
+
+## Lesson 3.2: JavaScript Beyond the Basics
+
+This Lesson, we dive deeper into JavaScript. Students will learn about ES6 features, asynchronous programming with promises and async/await, and interacting with APIs. These skills enable students to create more dynamic, efficient, and interactive web applications.
+
+### Example: Fetching Data from an API with JavaScript
+
+<CodeGroup title="API Interaction">
+```javascript
+// Part 1: Variables and Data Types
+
+// Storing different types of data in variables
+var message = "Hello, world!"; //string
+var age = 25; //number
+var isStudent = true; //boolean
+
+// Displaying variables in console
+console.log(message);
+console.log("Age: " + age);
+console.log("Is student? " + isStudent);
+
+// Part 2: Functions and Scope
+
+// Defining a function with parameters
+function greet(name) {
+var greeting = "Hello, " + name + "!";
+console.log(greeting);
+}
+
+// Calling the function with arguments
+greet("Alice");
+greet("Bob");
+
+// Accessing a variable inside and outside a function
+var globalVar = "I am global";
+
+function printVars() {
+var localVar = "I am local";
+console.log(localVar);
+console.log(globalVar);
+}
+
+printVars();
+
+// Part 3: Arrays and Loops
+
+// Iterating through an array
+var numbers = [1, 2, 3, 4, 5];
+
+for (var i = 0; i < numbers.length; i++) {
+console.log(numbers[i]);
+}
+
+// Part 4: Objects and Methods
+
+// Creating an object with a method
+var person = {
+name: "John",
+age: 30,
+sayHello: function() {
+console.log("Hello, my name is " + this.name);
+}
+};
+
+// Calling the method of an object
+person.sayHello();
+
+// Part 5: DOM Manipulation
+
+// Getting an element by ID and modifying its content
+var heading = document.getElementById("heading");
+heading.innerHTML = "programming with JavaScript";
+
+// Creating a new element and appending it to the document
+var paragraph = document.createElement("p");
+paragraph.innerHTML = "This is a new paragraph.";
+document.body.appendChild(paragraph);
+
+function displayVariables() {
+var output = document.getElementById('output');
+output.textContent = 'Message: ' + message + ', Age: ' + age + ', Is student? ' + isStudent;
+}
+
+function displayGreeting() {
+var output = document.getElementById('output');
+output.textContent = greet('Alice');
+}
+
+function displayArray() {
+var output = document.getElementById('output');
+output.textContent = 'Numbers: ' + numbers.join(', ');
+}
+
+function displayPerson() {
+var output = document.getElementById('output');
+output.textContent = 'Person: ' + person.name + ', Age: ' + person.age;
+person.sayHello();
+}
+
+````
+</CodeGroup>
+
+<iframe
+  style={{ width: '100%', height: '500px' }}
+
+src="https://www.youtube.com/embed/C0biWkKoQzU"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowFullScreen
+
+> </iframe>
+
+## Lesson 3.3: Introduction to Backend Technologies
+
+As we venture into backend development, students will be introduced to Node.js and Next.js. They will learn what each of these frameworks achieve and how they enhance our OpenAI Webapps. This knowledge is crucial for students aspiring to become full-stack developers.
+
+### Example: Setting Up a Simple Server with Node.js and Express.js
+
+<CodeGroup title="Simple TypeScript syntax example">
+```typescript
+function greet(name: string): string {
+  return "Hello, " + name;
+}
+````
+
+</CodeGroup>
+
+## Homework: Advanced HTML and CSS
+
+For this unit's homework, you will continue working on the website from the previous week. 
+
+  - Open up [Codespaces website](https://github.com/features/codespaces) and log in with Github. 
+  - Open your website from Unit 2
+  - Right click on the index.html file, and press "Open with Live Server."
+  - You are on your live HTML Page!
+
+Now, it is time to further customize the website. Make sure to do the following:
+  - Custom CSS for every tag (such as h1, etc.)
+  - At least 5 different tags. Use [this list](https://www.semrush.com/blog/html-tags-list/) for help
+  - Polish your website and make it look nice
+  - **Submit your website through Schoology**
+

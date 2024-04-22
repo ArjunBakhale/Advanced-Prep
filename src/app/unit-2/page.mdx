@@ -1,0 +1,143 @@
+export const metadata = {
+  title: 'Web Basics',
+  description:
+    'Delve into the essential elements of web development, focusing on HTML, CSS, JavaScript, and the underlying structure of the web.',
+}
+
+# Unit 2: Web Basics
+
+In Unit 2 of the Nivaro AI Website Program, we are taking a significant leap into the world of web development. This unit will focus on how websites are built and function. We will be exploring the cornerstones of web development: HTML, CSS, and JavaScript, and how they come together to create the interactive web pages we use daily. {{ className: 'lead' }}
+
+<iframe
+  style={{ width: '100%', height: '500px' }}
+
+src="https://www.youtube.com/embed/cVGUZzLBwuA"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowFullScreen
+
+> </iframe>
+
+## Lesson 2.1: Introduction to the Web
+
+The first part of this unit is dedicated to understanding the basic infrastructure of the web. Although you should understand the basics of how computers request websites, it is very important that you understand HTML, CSS and JavaScript.
+
+### HTML (HyperText Markup Language):
+  - **HTML adds text, images and links**
+  - Stands for HyperText Markup Language.
+  - Uses something called tags to define elements like headings, paragraphs, images, links, etc.
+  - Defines the layout of text, images, links, and other media.
+  - Acts as the building blocks that browsers use to render a webpage.
+
+### CSS (Cascading Style Sheets):
+  - **CSS makes a website look nice**
+  - Stands for Cascading Style Sheets.
+  - Controls the layout, colors, fonts, and spacing of elements.
+  - Makes the webpage visually appealing and user-friendly. 
+
+### JavaScript:
+  - **JavaScript lets you add in actually useful things**
+  - A programming language that adds interactivity to web pages.
+  - Allows for the creation of responsive and interactive web applications.
+  - Responds to user actions such as clicks, scrolls, and inputs.
+  - Allows for the creation of web applications with real-time updates and interactive elements.
+
+
+
+<iframe
+  style={{ width: '100%', height: '500px' }}
+
+  src="https://www.youtube.com/embed/8__Fk5BfU98"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowFullScreen
+></iframe>
+
+## Lesson 2.2: Anatomy of a Website
+
+Moving forward, we will focus on the specifics of web development. We start with HTML, the backbone of all web pages, where you will learn how to structure content on a webpage. Following this, we will dive into CSS, which allows us to style and layout our web pages, giving websites a visually appealing look. Lastly, we introduce JavaScript, the scripting language that adds interactivity and dynamic content to web pages.
+
+### HTML: Structuring Web Content
+
+HTML, or HyperText Markup Language, is the standard language for creating web pages. It helps structure the content on the web, defining elements such as headings, paragraphs, links, and other pieces of content.
+
+
+
+<CodeGroup title="Creating a Simple HTML Document">
+```html
+<!-- Basic HTML Document Structure -->
+<!doctype html>
+<html>
+  <head>
+    <title>My Web Page</title>
+  </head>
+  <body>
+    <h1>Welcome to Web Development</h1>
+    <p>This paragraph introduces you to HTML.</p>
+  </body>
+</html>
+````
+
+    </CodeGroup>
+
+### CSS: Styling Web Pages
+
+CSS, or Cascading Style Sheets, is used to control the layout and appearance of the elements structured by HTML. It brings life to the web pages with colors, fonts, and spacing.
+
+<CodeGroup title="Adding Styles with CSS">
+```css
+/* Basic CSS to Style HTML Elements */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+h1 {
+color: darkblue;
+}
+
+p {
+color: grey;
+}
+
+````
+
+    </CodeGroup>
+
+
+
+### JavaScript: Adding Interactivity
+
+JavaScript is the scripting language that allows us to create dynamically updating content, control multimedia, animate images, and much more. **Do not worry too much about understanding this code, we will help you with JavaScript in future weeks.**
+
+<CodeGroup title="Interactive Elements with JavaScript">
+```javascript
+// Simple JavaScript for Interactive Elements
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector('h1').addEventListener('click', () => {
+    alert('Welcome to interactive web development!')
+  })
+})
+````
+
+    </CodeGroup>
+
+## Homework: Basic Website
+For this unit's homework, you will be making a very simple HTML and CSS page using CodeSpaces. 
+
+  - Open up [Codespaces website](https://github.com/features/codespaces) and log in with Github. 
+  - Clone [this repo](https://github.com/jdl20515/nivaro_hw_2) by entering *jdl20515/nivaro_hw_2*. Click create Codespace.
+  - Once in, click on extensions at the left of your screen, which is the button that looks like four squares.
+  - Then, search up Live Server and click Install.
+  - Click on files at the left of your screen, which should look like two papers.
+  - Right click on the index.html file, and press "Open with Live Server."
+  - You are on your live HTML Page!
+
+Now, it is time to make the website your own. Make sure to change the following:
+  - Background color
+  - At least one text color
+  - Change the website title
+  - Change the HTML to talk about your favorite hobby
+  - **Submit your website through Schoology**

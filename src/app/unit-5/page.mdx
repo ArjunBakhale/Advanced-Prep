@@ -1,0 +1,300 @@
+export const metadata = {
+  title: 'Building an AI Chatbot',
+  description:
+    'In Unit 5, students will learn to build an AI Chatbot using Vercel AI SDK and OpenAI within a Next.js application.',
+}
+
+# Unit 5: Building an AI Chatbot
+
+Unit 5 of the Nivaro AI Website Program is a hands-on guide to integrating an AI chatbot using OpenAI with the Vercel AI SDK in a Next.js application. Students will set up a project, create an AI chatbot, and learn to stream responses using the Edge Runtime. {{ className: 'lead' }}
+
+<iframe
+  style={{ width: '100%', height: '500px' }}
+
+src="https://www.youtube.com/embed/rzGgckpdZZE"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowFullScreen
+
+> </iframe>
+
+## Lesson 5.1: Creating a Next.js AI Chatbot Application
+
+In this lesson, students will create a Next.js application, install necessary packages, and set up environment variables for AI integration.
+
+### Setting Up the Project
+
+1. **Create a Next.js Application:**
+
+   - Create a new empty codespace
+   - Create a Next.js app:
+     ```bash
+     npx create-next-app@latest
+     ```
+   - **Make sure to drag out all of the folders from the app folder created, or it will not work. Watch the video for an example**
+
+   - Install the Vercel AI SDK and OpenAI API client:
+     ```bash
+     pnpm install ai openai
+     ```
+
+2. **Add OpenAI API Key:**
+   - Create a `.env` file in the project root (create a new file by right clicking)
+   - Add your OpenAI API key. **THE API KEY SHOULD BE WITH YOUR TEACHER OR YOU CAN MESSAGE US FOR IT, IT IS PRIVATE:**
+     ```bash
+     OPENAI_API_KEY=your_openai_api_key
+     ```
+
+### Creating the AI Chatbot Route Handler
+
+3. **Implement a Route Handler:**
+
+   - Create `app/api/chat/route.ts` for handling chat requests:
+
+     ```typescript
+     import OpenAI from 'openai'
+     import { OpenAIStream, StreamingTextResponse } from 'ai'
+
+     const openai = new OpenAI(process.env.OPENAI_API_KEY)
+     export const runtime = 'edge'
+
+     export async function POST(req: Request) {
+       const { messages } = await req.json()
+       console.log(messages)
+
+       // Add a system message at the start of the array
+       messages.unshift({
+         role: 'system',
+         content:
+           'You are a middle schooler who only talks in 5 letter long words.',
+       })
+
+       console.log(messages)
+
+       const response = await openai.chat.completions.create({
+         model: 'gpt-3.5-turbo',
+         stream: true,
+         messages,
+       })
+
+       const stream = OpenAIStream(response)
+       return new StreamingTextResponse(stream)
+     }
+     ```
+
+   - The route handler uses OpenAI's API to generate chat completions and streams the response back.
+
+### Building the User Interface
+
+4. **Set Up the Chat UI:**
+
+   - Update `app/page.tsx` to include the chat interface:
+
+     ```tsx
+     'use client'
+     import { useChat } from 'ai/react'
+
+     export default function Chat() {
+       const { messages, input, handleInputChange, handleSubmit } = useChat()
+
+       return (
+         <main className="mx-auto flex h-screen w-full max-w-lg flex-col bg-blue-500 p-6">
+           <section className="mb-4 overflow-auto rounded-lg bg-white p-4 shadow">
+             {messages.map((m) => (
+               <div
+                 className={`mb-2 rounded-md p-2 ${
+                   m.role === 'user' ? 'bg-blue-200' : 'bg-green-200'
+                 }`}
+                 key={m.id}
+               >
+                 <strong>{m.role === 'user' ? 'You: ' : 'AI: '}</strong>
+                 {m.content}
+               </div>
+             ))}
+           </section>
+           <form className="mt-auto flex space-x-4" onSubmit={handleSubmit}>
+             <input
+               className="flex-grow rounded-md border-2 border-gray-300 p-2 text-black"
+               value={input}
+               onChange={handleInputChange}
+               placeholder="Say something..."
+             />
+             <button
+               className="rounded-md bg-blue-600 p-2 text-white hover:bg-blue-700"
+               type="submit"
+             >
+               Send
+             </button>
+           </form>
+         </main>
+       )
+     }
+     ```
+
+5. **Editing system prompt:**
+
+   - Edit the system message to make the chatbot personalized to you
+
+6. **Edit the basic styling of the chatbot:**
+   - Use GPT to customize the chatbot
+
+### Simple Version:
+
+<iframe
+  src="https://codesandbox.io/p/devbox/nextjs-chatbot-for-nivaro-v6dcwk?embed=1&file=%2Fapp%2Fpage.tsx"
+  style={{
+    width: '100%',
+    height: '1000px',
+    border: 0,
+    borderRadius: '4px',
+    overflow: 'hidden',
+  }}
+  title="nextjs chatbot for nivaro"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+<br></br><br></br><br></br>
+
+<iframe
+  style={{ width: '100%', height: '500px' }}
+
+src="https://www.youtube.com/embed/nnjbI0g1x9I"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowFullScreen
+
+> </iframe>
+
+## Lesson 5.2: Rundown of an Example Next.js AI Chatbot Application
+
+In this lesson, students will build off the Next.js application constructed in 5.1 and transform it into an application they are passionate about.
+
+### Updating the User Interface
+
+1. **Update the Chatbot :**
+
+   - Update the chatbot in `app/page.tsx` to use styles for a fitness app:
+
+     ```tsx
+     // page.tsx
+     function Chat() {
+        const { messages, input, handleInputChange, handleSubmit } = useChat()
+
+        return (
+          <main className="mx-auto mb-auto flex h-screen w-full max-w-lg flex-col bg-gray-400 p-6">
+            <span className="mb-4 bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-3xl font-bold text-transparent drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+              FITT Chatbot
+            </span>
+
+            <section className="mb-4 overflow-auto rounded-lg bg-white p-4 shadow">
+              {messages.map((m) => (
+                <div
+                  className={`mb-2 rounded-md p-2 ${
+                    m.role === 'user'
+                      ? 'text-white-400 bg-orange-400'
+                      : 'text-white-400 bg-gray-400'
+                  }`}
+                  key={m.id}
+                >
+                  <strong>{m.role === 'user' ? 'You: ' : 'AI: '}</strong>
+                  {m.content}
+                </div>
+              ))}
+            </section>
+            <form className="mt-auto flex space-x-4" onSubmit={handleSubmit}>
+              <input
+                className="flex-grow rounded-md border-2 border-gray-300 p-2 text-black"
+                value={input}
+                onChange={handleInputChange}
+                placeholder="Say something..."
+              />
+              <button
+                className="text-white-400 rounded-md bg-orange-400 p-2 hover:bg-orange-500"
+                type="submit"
+              >
+                Send
+              </button>
+            </form>
+          </main>
+        )
+      }
+     ```
+  
+2. **Adding a Landing Page:**
+
+   - Update `app/page.tsx` to have a landing page users see before the actual chatbot:
+
+     ```tsx
+     // page.tsx
+      import { useState } from 'react'
+
+      function LandingPage({ onStartChat }) {
+        return (
+          <main className="fixed inset-0 flex items-center justify-center bg-gray-500">
+            <div className="animate__animated animate__fadeIn mx-auto flex w-full max-w-lg flex-col items-center justify-center rounded-lg bg-gray-500 p-8 shadow-lg">
+              <h1 className="mb-6 text-3xl font-bold">
+                <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                  Welcome to Fitt_ AI
+                </span>
+              </h1>
+              <button
+                className="rounded-md border border-black bg-orange-500 p-3 text-white transition duration-300 hover:bg-orange-600"
+                onClick={onStartChat}
+              >
+                Start Workout
+              </button>
+            </div>
+          </main>
+        )
+      }
+     ```
+
+3. **Create navigation betweeen screens:**
+
+   - Add a default function App to  `app/page.tsx` that handles changing screens:
+
+     ```tsx
+     // page.tsx
+      export default function App() {
+        const [isChatStarted, setIsChatStarted] = useState(false)
+
+        const handleStartChat = () => {
+          setIsChatStarted(true)
+        }
+        //if the button is clicked
+        return isChatStarted ? (
+          <Chat />
+        ) : (
+          <LandingPage onStartChat={handleStartChat} />
+        )
+      }
+     ```
+
+    - To add more screens, create a function like `function aboutMe()`, return your styles, and ask chatGPT to add navigation to this screen in the App function. 
+
+### Example Updated Next.js app, FittAI:
+
+<iframe
+  src="https://codesandbox.io/p/devbox/nextjs-chatbot-for-nivaro-forked-lnyqfz?embed=1"
+  style={{
+    width: '100%',
+    height: '1000px',
+    border: 0,
+    borderRadius: '4px',
+    overflow: 'hidden',
+  }}
+  title="nextjs chatbot for nivaro (forked)"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+
+## Homework: Basic Bot
+
+Follow Units 5.1 and 5.2 to get started. Once you have a working chatbot, change it to make it your own.
+
+- Add custom instructions
+- Edit the HTML to make it your own
+- Change the CSS to make it look better
+- **Submit your website through Schoology**

@@ -1,0 +1,144 @@
+export const metadata = {
+  title: 'React.js and Tailwind CSS',
+  description:
+    'Unit 4 of the Nivaro AI Website Program introduces students to React.js and Tailwind CSS, focusing on creating dynamic web applications with these modern technologies.',
+}
+
+# Unit 4: React.js and Tailwind CSS
+
+Hey everyone! In Unit 4, we're diving into some cool stuff with React.js and Tailwind CSS. React.js is a big deal for making interactive web pages, and Tailwind CSS is all about making things look good easily. We're using Codespaces for this, so it's going to be super easy to get started.
+
+<iframe
+  style={{ width: '100%', height: '500px' }}
+
+src="https://www.youtube.com/embed/R0KJoMMhfnI"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen
+
+> </iframe>
+
+## Lesson 4.1: Intro to React.js
+
+React.js makes web pages interactive. We'll start by setting up a React project right in Codespaces.
+
+### Setting Up in Codespaces
+
+1. Go to [CodeSpaces](https://github.com/codespaces/).
+2. Click on 'Use React Template'.
+
+### Example: A Simple React Component
+
+Let's make a basic React component. This is how you structure UI elements in React.
+
+```javascript
+// Example: A simple React component
+import React from 'react'
+
+function WelcomeMessage() {
+  return <h1>Welcome to React.js!</h1>
+}
+
+export default WelcomeMessage
+```
+
+<iframe
+  style={{ width: '100%', height: '500px' }}
+
+src="https://www.youtube.com/embed/rboJixUrMUU"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen
+
+> </iframe>
+
+## Lesson 4.2: Intro to Tailwind CSS
+
+Tailwind CSS is a cool way to style things without writing tons of CSS. We'll add it to our React project in Codespaces.
+
+### Adding Tailwind CSS in Codespaces
+
+1. Open your React project in Codespaces.
+2. In the 'Dependencies' section, add `tailwindcss`, `postcss`, and `autoprefixer`.
+3. Create a `tailwind.config.js` file and set it up:
+
+   ```js
+   // tailwind.config.js
+   module.exports = {
+     content: ['./src/**/*.{js,jsx,ts,tsx}'],
+     theme: {
+       extend: {},
+     },
+     plugins: [],
+   }
+   ```
+
+4. In your main CSS file, import Tailwind:
+
+   ```css
+   /* In your main CSS file */
+   @import 'tailwindcss/base';
+   @import 'tailwindcss/components';
+   @import 'tailwindcss/utilities';
+   ```
+
+5. Add this to your public/index.html file under the `<head>` section:
+
+```css
+<head>
+  ...
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+```
+
+### Example: Styling with Tailwind CSS
+
+Now, let's use Tailwind CSS to style a React component.
+
+```html
+<!-- Example: Using Tailwind CSS with React -->
+<div
+  className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4"
+>
+  <div>
+  <!-- Using: text-xl, font-medium, text-black -->
+    <h1 className="text-xl font-medium text-black">ChitChat</h1>
+  
+  <!-- Using: text-gray-500 -->
+    <p className="text-blue">New message!</p>
+  </div>
+</div>
+```
+
+In the example above, we styled the text in the h1 tag (ChitChat) with class names
+of **text-xl, font-medium** and **text-black,** while we styled the text in the p 
+tag (New Message!) with **text-blue.** These tags do the following:
+  - **text-xl:** Makes the text extra large
+  - **font-medium:** Makes the font a medium boldness
+  - **text-black** Makes the text color black
+  - **text-blue** Makes the text color blue
+
+Using Tailwindcss, you can clearly see how much easier it is to make
+a website look good! For more classes, make sure to use [Tailwind CSS Documentation](https://divmagic.com/tailwind).
+
+### Important Links
+
+- [React.js Documentation](https://react.dev/learn)
+- [Tailwind CSS Documentation](https://divmagic.com/tailwind)
+
+## Homework: Resume Website
+
+Follow Units 4.1 and 4.2 to get started. From there, work on a resume website to show yourself off! An example is below:
+
+<img src="https://i.ibb.co/tKGnsnJ/Capture-2024-02-28-205937.png" />
+(from How to Become a Developer YT)
+
+**Include the following:**
+
+- Your Name
+- A little blurb about yourself
+- A picture. Doesn't have to be of yourself, just something that represents you
+- A nice looking website
+- **Submit your website through Schoology**

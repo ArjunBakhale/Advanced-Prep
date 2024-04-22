@@ -1,0 +1,171 @@
+export const metadata = {
+  title: 'Customizing your AI Website',
+  description:
+    'Unit 6 of the Nivaro AI Website Program teaches practical knowledge for students to make their own projects. Students will learn to add pages to websites, create new components, and make multiple chatbots.',
+}
+
+# Unit 6: Customizing an AI Chatbot
+
+Unit 6 of the Nivaro AI Website Program teaches practical knowledge for students to make their own projects. Students will learn to add pages to websites, create new components, and make multiple chatbots.
+
+<iframe
+  style={{ width: '100%', height: '500px' }}
+
+src="https://www.youtube.com/embed/pRNgKXP_8nA"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowFullScreen
+
+> </iframe>
+
+## Lesson 6.1: Understanding A Next.js Application
+
+In this lesson, students will understand the basics of a full-scale Next.js app.
+
+### Setting Up the Project
+
+1. **Clone the starter Next.js Application:**
+    - Open the GitHub Link: https://github.com/ArjunBakhale/nivaroStarterCode
+    - Press the green Code button
+    - At the top of the button screen, click Codespaces
+    - Click Create a codespace on the main
+
+2. **Setup the Next.js Application:**
+    - Wait for a few minutes while the codespace configures itself
+    - After everything installs, type `npm run dev`
+    - Open http://localhost:3000 to check out the website
+
+3. **Adding your API Key**
+    - Find the .env file
+    - Set the value of the `OPENAI_API_KEY` variable to your API Key
+    - Wrap your API Key in "" since its read as a string
+
+### Understanding The App’s Layout
+
+- **App Folder**
+   - The App folder contains all the pages users can open and see
+   - The examplePage folder inside App is a separate page that can be opened by clicking the “Example” in the navbar
+   - To make a new page that users can open, a new folder has to be created for it inside the App folder
+
+- **Components**
+   - Components are reusable blocks of code
+   - Add all components to the components folder
+   - Components are combined to create an organized website
+
+- **Public**
+   - Add any non-code content you need in your project here
+   - For example, the Nivaro logo on the home screen of the example website is saved inside this folder
+
+- **Don’t worry about the next, node_modules, and lib folders**
+<br></br><br></br>
+
+<iframe
+  style={{ width: '100%', height: '500px' }}
+
+src="https://www.youtube.com/embed/-snlOP6hPC0"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowFullScreen
+
+> </iframe>
+
+## Lesson 6.2: Creating and Implementing Components 
+
+In this lesson, students will learn how to make Next.js components and implement them in their app.
+
+### Creating A New Component
+
+1. Make a copy of the starter Component
+    - Find `starterCode.tsx` in the components folder
+    - Copy the actual file itself and paste it into the Components folder
+    - Rename your copy to “contactMe”
+
+### Editing the Contact Me Component
+
+1. Rename the function from EditMyName to ContactMe
+2. Replace the comment inside the `<section>` tag with the below code (Don't remove the section tag, we need that!):
+
+    ```tsx
+    <div className="max-w-screen-md bg-white p-8 rounded shadow-lg mx-auto">
+       <h2 className="text-2xl font-bold mb-4">Contact Me</h2>
+       <form>
+          <div className="mb-4">
+             <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">Name</label>
+             <input type="text" id="name" name="name" className="border border-gray-400 p-2 w-full rounded" />
+          </div>
+          <div className="mb-4">
+             <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">Email</label>
+             <input type="email" id="email" name="email" className="border border-gray-400 p-2 w-full rounded" />
+          </div>
+          <div className="mb-4">
+             <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">Message</label>
+             <textarea id="message" name="message" className="border border-gray-400 p-2 w-full rounded"></textarea>
+          </div>
+          <button type="submit" className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600">Send Message</button>
+       </form>
+    </div>
+### Adding Contact Me to the Home Page
+
+1. Navigate to `page.tsx` in the App folder
+2. Add the following import statement: `import Contact from '@/components/contactMe'`
+   - Make sure that the text after `components/` in the import matches the name of `contactMe.tsx` file, not the function name
+3. Add `<Contact/>` below the other component calls
+4. Check to see if the Contact Me component shows up
+
+<iframe
+  style={{ width: '100%', height: '500px' }}
+
+src="https://www.youtube.com/embed/PXppgjoQSf8"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowFullScreen
+
+> </iframe>
+
+## Lesson 6.3: Creating and Linking Screens
+
+In this lesson, students will create new screens and add navigation to them in Next.js.
+
+### Creating A New Screen
+
+1. **To create new pages in Next.js, create a folder (with the name of your screen) and add a `page.tsx` file to it**
+   - To do this, copy the `examplePage` folder and paste it. Rename it to `newPage`
+   - Import and add components to this new screen
+
+### Opening New Screens
+
+1. **Edit the URL of your project by adding `/newPage` to the end**
+   - For example: `https://app.github.dev` -> `https://app.github.dev/newPage`
+   - This tells us that our URL + nothing gives us the home screen. If we add `/aPage` to the end of our URL, it takes us to that screen
+
+### Adding Navigation To The Navbar
+
+1. Open `header.tsx` in the components folder
+2. Add a new value to the `links` variable: `{name: 'New Page', path: '/newPage'},`
+3. Run `npm run dev` and check if the new button on the header navigates to the `newPage`
+
+### Adding Navigation To Buttons
+
+1. Import this at the top of the file: `import Link from 'next/link';`
+2. Wrap the button in Link Tags
+3. Example: 
+         ```tsx 
+            <Link href="/newPage">
+               <button> Take me to the new page! </button>
+            </Link> 
+         ```
+
+
+## Homework: Basic App
+
+Follow Units 6.1, 6.2, and 6.3 to create an outline for your final website. 
+
+- Create components you will use in your website (Don't spend to much time making it look perfect)
+- Add all the screens you will use in your final website 
+- Update the header with all your new screens
+- Change the message for your chatbot in `route.ts` 
+- Save your work and save it to a new github repository
+- **Submit your website through Schoology**
