@@ -1,121 +1,69 @@
+import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { headers } from "next/headers";
-import { createClient } from "@/utils/supabase/server";
+
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
+import { UserAuthForm } from "@/app/login/components/UserAuthForm";
+import { createSupabaseServerComponentClient } from "@/lib/supabase/server-client";
 import { redirect } from "next/navigation";
-import { SubmitButton } from "./submit-button";
+import { Logo } from "@/components/Logo";
 
-export default function Login({
-  searchParams,
-}: {
-  searchParams: { message: string };
-}) {
-  const signIn = async (formData: FormData) => {
-    "use server";
+export const metadata: Metadata = {
+  title: "Login – Ivyfy",
+  description: "Login to start ivyfying your application today.",
+};
 
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
-    const supabase = createClient();
+export default async function AuthenticationPage() {
+  //if logged in, redirect to home page
+  const {
+    data: { session },
+  } = await createSupabaseServerComponentClient().auth.getSession();
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    if (error) {
-      return redirect("/login?message=Could not authenticate user");
-    }
-
-    return redirect("/protected");
-  };
-
-  const signUp = async (formData: FormData) => {
-    "use server";
-
-    const origin = headers().get("origin");
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
-    const supabase = createClient();
-
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${origin}/auth/callback`,
-      },
-    });
-
-    if (error) {
-      return redirect("/login?message=Could not authenticate user");
-    }
-
-    return redirect("/login?message=Check email to continue sign in process");
-  };
+  if (session) {
+    redirect("/");
+  }
 
   return (
-<div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center items-center gap-2 min-h-screen">    
-<Link
-        href="/"
-        className="absolute left-8 top-8 py-2 px-4 rounded-md no-underline text-foreground bg-btn-background hover:bg-btn-background-hover flex items-center group text-sm"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1"
-        >
-          <polyline points="15 18 9 12 15 6" />
-        </svg>{" "}
-        
-        
-        Back
-      </Link>
-
-      <form className="animate-in flex-1 flex flex-col w-full justify-center items-center gap-2 text-foreground font-inherit">
-        <label className="text-md" htmlFor="email">
-          Email
-        </label>
-        <input
-          className="rounded-md px-4 py-2 bg-inherit border mb-6"
-          name="email"
-          placeholder="you@example.com"
-          required
-        />
-        <label className="text-md" htmlFor="password">
-          Password
-        </label>
-        <input
-          className="rounded-md px-4 py-2 bg-inherit border mb-6"
-          type="password"
-          name="password"
-          placeholder="••••••••"
-          required
-        />
-        <SubmitButton
-          formAction={signIn}
-          className="bg-blue-700 rounded-md px-4 py-2 text-foreground mb-2"
-          pendingText="Signing In..."
-        >
-          Sign In
-        </SubmitButton>
-        <SubmitButton
-          formAction={signUp}
-          className="border border-foreground/20 rounded-md px-4 py-2 text-foreground mb-2"
-          pendingText="Signing Up..."
-        >
-          Sign Up
-        </SubmitButton>
-        {searchParams?.message && (
-          <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
-            {searchParams.message}
-          </p>
-        )}
-      </form>
-    </div>
+    <>
+      <div className="container relative flex flex-col items-center justify-center w-full h-screen m-0 p-0 md:grid max-w-none grid-cols-2 lg:px-0">
+        <div className="hidden md:flex relative flex h-half md:h-full flex-col bg-muted p-0 md:p-20 text-white lg:flex dark:border-r">
+          <div className="absolute inset-0 bg-[#004684]" />
+          <div className="relative z-20 flex items-center text-lg font-medium">
+            <Logo width={200} height={100} fill="white" />
+          </div>
+          <div className="relative z-20 mt-auto">
+            <blockquote className="space-y-2">
+              <p className="text-lg">
+                &ldquo;Ivyfy is hands down the best tool you can use if you want
+                to get into a T10 college&rdquo;
+              </p>
+              <footer className="text-sm">David Lomelin, MIT &apos;28</footer>
+            </blockquote>
+          </div>
+        </div>
+        <div className="p-8 md:p-8 md:w-full">
+          <div className="mx-auto w-full flex-col justify-center space-y-6 sm:w-[350px] md:w-full md:space-y-6 md:px-4 md:py-8">
+            <div className="flex flex-col space-y-2 text-center">
+              <h1 className="text-2xl font-semibold tracking-tight">Sign in</h1>
+              <p className="text-sm text-muted-foreground leading-6">
+                Login with Google to create your account
+              </p>
+            </div>
+            <UserAuthForm />
+            <p className="px-8 text-center text-sm text-muted-foreground leading-6">
+              By clicking continue, you agree to our{" "}
+              <Link
+                href="/tos"
+                className="underline underline-offset-4 hover:text-primary"
+              >
+                Terms of Service
+              </Link>{" "}
+              .
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
